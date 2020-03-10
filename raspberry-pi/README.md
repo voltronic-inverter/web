@@ -10,29 +10,42 @@ This tutorial focuses on getting this communication setup on a Raspberry Pi
 
  - Download [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)
  - Image your SD card with Raspbian Lite
- - [Enable SSH access](https://www.raspberrypi.org/documentation/remote-access/ssh/)
- - Start your Raspberry Pi with the new image
- - Connect it to your **local** network
+ - Configure the before [Raspberry Pi for headless mode](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md) before installing the SD card
+ - Start the raspberry pi
 
 # SSH to Raspbian
 
-SSH to your Raspbian instance
-- Posix (*NIX/*BSD/OSX): Use the ssh command on your terminal
-- Windows: [I recommend using PuTTY](https://mediatemple.net/community/products/dv/204404604/using-ssh-in-putty-)
+**SSH to your Raspbian instance**
+[Windows](https://mediatemple.net/community/products/dv/204404604/using-ssh-in-putty-)
+[Mac](https://osxdaily.com/2017/04/28/howto-ssh-client-mac/)
+Linux & FreeBSD should be self explanitory by virtue that your are using POSIX already
 
-# Install nginx (pronounced engine X)
+# Update your Raspberry Pi
 
-[Follow the guide here to install nginx](https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md)
+```
+sudo apt-get clean
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo reboot now
+```
 
-### NOTE
-Only install nginx, do not do any of the PHP install or configuration.  Unless you plan is to use PHP of course 🤮
+# Run the install script
 
-# Install the required libraries
-
-# Checkout Fast CGI Voltronic interface using git
-
-# Build the library
-
-# Configure nginx to use the library
+```
+curl 'https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/install.sh' | bash
+sudo reboot now
+```
 
 # Test it
+
+### USB:
+```
+curl -X PUT -d 'QPIGS' 'http://${Raspberry PI IP}:8080/axpert/usb/command'; echo ''
+(241.1 50.0 230.1 50.0 0253 0192 005 381 54.60 000 100 0031 0000 000.0 00.00 00000 00010101 00 00 00000 110  # example
+```
+
+### Serial:
+```
+curl -X PUT -d 'QPIGS' 'http://${Raspberry PI IP}:8080/axpert/serial/command'; echo ''
+(241.1 50.0 230.1 50.0 0253 0192 005 381 54.60 000 100 0031 0000 000.0 00.00 00000 00010101 00 00 00000 110  # example
+```
