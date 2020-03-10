@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # https://stackoverflow.com/questions/12025790/how-do-i-write-a-watchdog-daemon-in-bash
-PIDFILE="/tmp/voltronic-fcgi.pid"
+PIDFILE="/tmp/voltronic-fcgi-usb.pid"
 if [ x"$1" = x-daemon ]; then
   if test -f "$PIDFILE"; then exit; fi
   echo $$ > "$PIDFILE"
@@ -13,5 +13,5 @@ if [ x"$1" = x-daemon ]; then
 elif [ x"$1" = x-stop ]; then
   kill `cat "$PIDFILE"`
 else
-  nohup "$0" -daemon > /tmp/voltronic-fcgi-control.out 2> /tmp/voltronic-fcgi-control.err < /dev/null &
+  nohup "$0" -daemon > /tmp/voltronic-fcgi-usb-control.out 2> /tmp/voltronic-fcgi-usb-control.err < /dev/null &
 fi
