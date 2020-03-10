@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "${USER}" != "root" ]; then
-  echo "You must be root while executing this script"
-  exit 1
-fi
+[ "$UID" -eq 0 ] || exec sudo "$0" "$@"
 
 # Install the required software
 apt-get clean
