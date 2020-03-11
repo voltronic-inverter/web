@@ -40,12 +40,20 @@ sudo reboot now
 
 ### USB:
 ```
-curl -X PUT -d 'QPIGS' 'http://${Raspberry PI IP}:8080/axpert/usb/command'; echo ''
+curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/usb'; echo ''
 (241.1 50.0 230.1 50.0 0253 0192 005 381 54.60 000 100 0031 0000 000.0 00.00 00000 00010101 00 00 00000 110  # example
 ```
 
 ### Serial:
 ```
-curl -X PUT -d 'QPIGS' 'http://${Raspberry PI IP}:8080/axpert/serial/command'; echo ''
+curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/serial'; echo ''
 (241.1 50.0 230.1 50.0 0253 0192 005 381 54.60 000 100 0031 0000 000.0 00.00 00000 00010101 00 00 00000 110  # example
 ```
+
+**NOTE**
+You likely will have to update /etc/nging/nginx.conf to match your serial port configuration.
+`fastcgi_param  SERIAL_PORT_NAME    "/dev/tty.usbserial";`
+
+Change this part `/dev/tty.usbserial` to match your serial port.
+
+If you are already using a prolific USB -> Serial converter (by far the most common), the default will work for you
