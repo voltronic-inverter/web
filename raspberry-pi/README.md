@@ -40,13 +40,13 @@ sudo reboot now
 
 ### USB:
 ```
-curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/usb'; echo ''
+curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/usb'
 (241.1 50.0 230.1 50.0 0253 0192 005 381 54.60 000 100 0031 0000 000.0 00.00 00000 00010101 00 00 00000 110  # example
 ```
 
 ### Serial:
 ```
-curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/serial'; echo ''
+curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/serial'
 (241.1 50.0 230.1 50.0 0253 0192 005 381 54.60 000 100 0031 0000 000.0 00.00 00000 00010101 00 00 00000 110  # example
 ```
 
