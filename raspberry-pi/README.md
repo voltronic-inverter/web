@@ -38,6 +38,13 @@ sudo reboot now
 
 # Test it
 
+### Using HTML:
+
+Navigate to:
+`http://${Raspberry PI IP}:8080/command.html`
+
+# Issue a command directly:
+
 ### USB:
 ```
 curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/usb'
