@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<body onload="setInputSelect()">
+
+<div>
+  <h2>Enter command in the box</h2>
+  <input type="text" id="commandInputBox" value="QPIGS">
+  <input type="radio" id="usb" name="inputSelect" value="usb" onchange="handleInputChange();">
+  <label for="usb">USB</label>
+  <input type="radio" id="serial" name="inputSelect" value="serial" onchange="handleInputChange();">
+  <label for="serial">Serial</label><br>
+  <button type="button" onclick="runCommand()">Execute</button>
+  <div id="result"></div>
+</div>
+
+<script>
+function setInputSelect() {
+    if (typeof(Storage) !== "undefined") {
+        if (localStorage.inputSelectLast) {
+            if (localStorage.inputSelectLast == "usb") {
+                document.getElementById("usb").checked = true;
+            } else if (localStorage.inputSelectLast == "serial") {
+                document.getElementById("serial").checked = true;
+            }
+        }
+    }
+}
+
+function handleInputChange() {
+    if (typeof(Storage) !== "undefined") {
+        if (document.getElementById("usb").checked) {
+            localStorage.inputSelectLast = "usb";
+        } else if (document.getElementById("serial").checked) {
+            localStorage.inputSelectLast = "serial";
+        }
+    }
+}
+
+
+function runCommand() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("result").innerHTML += this.responseText + "<br/>";
+        }
+    };
+
+    if (document.getElementById("usb").checked) {
+        xhttp.open("POST", "/voltronic/usb", true);
+        xhttp.send(document.getElementById("commandInputBox").value);
+    } else if (document.getElementById("serial").checked) {
+        xhttp.open("POST", "/voltronic/serial", true);
+        xhttp.send(document.getElementById("commandInputBox").value);
+    } else {
+        window.alert("You must select either USB or serial");
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -20,12 +20,14 @@ wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-p
 wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/voltronic-fcgi-control -O /etc/init.d/voltronic-fcgi-control
 wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/85-voltronic.rules -O /etc/udev/rules.d/85-voltronic.rules
 wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/nginx.conf -O /etc/nginx/nginx.conf
+wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/command.html -O /usr/share/nginx/html/command.html
 
 chmod 775 /opt/voltronic-web/voltronic-fcgi-serial-control
 chmod 775 /opt/voltronic-web/voltronic-fcgi-usb-control
 chmod 775 /etc/init.d/voltronic-fcgi-control
 chmod 664 /etc/udev/rules.d/85-voltronic.rules
 chmod 664 /etc/nginx/nginx.conf
+chmod 664 /usr/share/nginx/html/command.html
 
 cd /opt/voltronic-fcgi-interface/lib/
 ./pull_libfcgi2.sh
