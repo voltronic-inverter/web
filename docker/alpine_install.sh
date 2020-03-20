@@ -30,3 +30,15 @@ cd /opt/voltronic-fcgi-interface
 make serial
 make hidraw
 make libusb
+
+mv /opt/voltronic-fcgi-interface/voltronic_fcgi_hidraw /opt/voltronic_fcgi_hidraw
+mv /opt/voltronic-fcgi-interface/voltronic_fcgi_libusb /opt/voltronic_fcgi_libusb
+mv /opt/voltronic-fcgi-interface/voltronic_fcgi_serial /opt/voltronic_fcgi_serial
+
+chmod 775 /opt/voltronic_fcgi_hidraw
+chmod 775 /opt/voltronic_fcgi_libusb
+chmod 775 /opt/voltronic_fcgi_serial
+
+rm -rf /opt/voltronic-fcgi-interface
+
+apk del gcc musl-dev git autoconf make automake libtool linux-headers
