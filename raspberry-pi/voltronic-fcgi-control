@@ -17,8 +17,8 @@ case "$1" in
   start)
     log_begin_msg "Starting voltronic fast-cgi deamons"
 
-    /opt/voltronic-web/voltronic-fcgi-serial-control
-    /opt/voltronic-web/voltronic-fcgi-usb-control
+    /opt/voltronic-fcgi-interface/voltronic-fcgi-serial-control
+    /opt/voltronic-fcgi-interface/voltronic-fcgi-usb-control
 
     log_end_msg $?
     exit 0
@@ -26,8 +26,8 @@ case "$1" in
   stop)
     log_begin_msg "Stopping voltronic fast-cgi deamons"
 
-    /opt/voltronic-web/voltronic-fcgi-serial-control stop
-    /opt/voltronic-web/voltronic-fcgi-usb-control stop
+    /opt/voltronic-fcgi-interface/voltronic-fcgi-serial-control stop
+    /opt/voltronic-fcgi-interface/voltronic-fcgi-usb-control stop
 
     log_end_msg $?
     exit 0
