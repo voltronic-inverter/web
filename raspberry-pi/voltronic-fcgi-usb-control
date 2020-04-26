@@ -7,7 +7,7 @@ if [ x"$1" = x-daemon ]; then
   echo $$ > "$PIDFILE"
   trap "rm '$PIDFILE'" EXIT SIGTERM
   while true; do
-    LD_LIBRARY_PATH=/usr/local/lib spawn-fcgi -p 9002 -n /opt/voltronic-fcgi-interface/voltronic_fcgi_hidraw &
+    LD_LIBRARY_PATH=/usr/local/lib spawn-fcgi -p 9002 -n /opt/voltronic-fcgi-interface/voltronic_fcgi_hidapi_hidraw &
     wait
   done
 elif [ x"$1" = x-stop ]; then

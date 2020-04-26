@@ -16,10 +16,10 @@ wget https://raw.githubusercontent.com/voltronic-inverter/web/master/35-voltroni
 chmod 664 /etc/udev/rules.d/35-voltronic-udev.rules
 
 # Download CGI interface binaries
-wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/binary/buster/voltronic_fcgi_hidraw -O /opt/voltronic-fcgi-interface/voltronic_fcgi_hidraw
-wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/binary/buster/voltronic_fcgi_serial -O /opt/voltronic-fcgi-interface/voltronic_fcgi_serial
-chmod 775 /opt/voltronic-fcgi-interface/voltronic_fcgi_hidraw
-chmod 775 /opt/voltronic-fcgi-interface/voltronic_fcgi_serial
+wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/binary/wheezy/voltronic_fcgi_hidapi_hidraw -O /opt/voltronic-fcgi-interface/voltronic_fcgi_hidapi_hidraw
+wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/binary/wheezy/voltronic_fcgi_libserialport -O /opt/voltronic-fcgi-interface/voltronic_fcgi_libserialport
+chmod 775 /opt/voltronic-fcgi-interface/voltronic_fcgi_hidapi_hidraw
+chmod 775 /opt/voltronic-fcgi-interface/voltronic_fcgi_libserialport
 
 # Download CFG interface control scripts
 wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/voltronic-fcgi-serial-control -O /opt/voltronic-fcgi-interface/voltronic-fcgi-serial-control
@@ -39,3 +39,9 @@ chmod 664 /usr/share/nginx/html/command.html
 update-rc.d voltronic-fcgi-control defaults
 
 echo "Reboot your Raspberry Pi using 'sudo reboot now'"
+wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/binary/wheezy/voltronic_fcgi_hidapi_hidraw -O /opt/voltronic-fcgi-interface/voltronic_fcgi_hidapi_hidraw
+wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/binary/wheezy/voltronic_fcgi_libserialport -O /opt/voltronic-fcgi-interface/voltronic_fcgi_libserialport
+chmod 775 /opt/voltronic-fcgi-interface/voltronic_fcgi_hidapi_hidraw
+chmod 775 /opt/voltronic-fcgi-interface/voltronic_fcgi_libserialport
+
+
