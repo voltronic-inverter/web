@@ -110,11 +110,11 @@ if [ $IS_X86_64 -eq 0 ]; then
   mv -f /src/fcgi-interface/voltronic_fcgi_libserialport /io/voltronic_fcgi_libserialport_x86
 else
   mv -f /src/fcgi-interface/voltronic_fcgi_libserialport /io/voltronic_fcgi_libserialport_x86-64
-end
+fi
 
 make clean && make hidapi-hidraw
 if [ $IS_X86_64 -eq 0 ]; then
   mv -f /src/fcgi-interface/voltronic_fcgi_hidapi_hidraw /io/voltronic_fcgi_hidapi_hidraw_x86
 else
   mv -f /src/fcgi-interface/voltronic_fcgi_hidapi_hidraw /io/voltronic_fcgi_hidapi_hidraw_x86-64
-end
+fi
