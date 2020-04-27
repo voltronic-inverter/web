@@ -1,9 +1,6 @@
 # define the C compiler to use
 
-# 64-bit
 CC = x86_64-w64-mingw32-gcc
-# 32-but
-# CC = i686-w64-mingw32-gcc
 CP = cp -f
 
 #directories
@@ -48,4 +45,4 @@ $(VODIR)/%.o: $(VSDIR)/%.c $(DEPS)
 .PHONY: clean
 
 clean:
-	$(RM) $(ODIR)/*.o $(VODIR)/*.o *~ voltronic_fcgi_libserialport voltronic_fcgi_hidapi voltronic_fcgi_hidapi_hidraw voltronic_fcgi_hidapi_libusb $(INCDIR)/*~ 
+	$(RM) $(ODIR)/*.o $(VODIR)/*.o *~ libserialport.exe hidapi.exe $(INCDIR)/*~ 
