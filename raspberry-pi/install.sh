@@ -39,9 +39,3 @@ chmod 664 /usr/share/nginx/html/command.html
 update-rc.d voltronic-fcgi-control defaults
 
 echo "Reboot your Raspberry Pi using 'sudo reboot now'"
-wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/binary/wheezy/voltronic_fcgi_hidapi_hidraw -O /opt/voltronic-fcgi-interface/voltronic_fcgi_hidapi_hidraw
-wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/binary/wheezy/voltronic_fcgi_libserialport -O /opt/voltronic-fcgi-interface/voltronic_fcgi_libserialport
-chmod 775 /opt/voltronic-fcgi-interface/voltronic_fcgi_hidapi_hidraw
-chmod 775 /opt/voltronic-fcgi-interface/voltronic_fcgi_libserialport
-
-

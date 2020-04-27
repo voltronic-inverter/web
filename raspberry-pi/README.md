@@ -62,5 +62,3 @@ You likely will have to update /etc/nging/nginx.conf to match your serial port c
 `fastcgi_param  SERIAL_PORT_NAME    "/dev/tty.usbserial";`
 
 Change this part `/dev/tty.usbserial` to match your serial port.
-
-If you are already using a prolific USB -> Serial converter (by far the most common), the default will work for you
