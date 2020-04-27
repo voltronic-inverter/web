@@ -76,7 +76,7 @@ cd /src/fcgi-interface/lib/libvoltronic/lib/hidapi
 ./bootstrap
 ./configure
 curl -L -o /src/fcgi-interface/lib/libvoltronic/lib/hidapi/hid_extra.h https://raw.githubusercontent.com/voltronic-inverter/web/master/linux/hid_extra.h
-echo '#include "hid_extra.h"' | cat - /src/fcgi-interface/lib/libvoltronic/lib/hidapi/linux/hid.c > /src/hid.c
+sed '/#include "hidapi.h"/a #include "hid_extra.h"' /src/fcgi-interface/lib/libvoltronic/lib/hidapi/linux/hid.c > /src/hid.c
 mv -f /src/hid.c /src/fcgi-interface/lib/libvoltronic/lib/hidapi/linux/hid.c
 make
 
