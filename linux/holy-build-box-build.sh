@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+declare -i IS_X86_64=1
+uname -m | grep 'i686' > /dev/null 2>/dev/null
+if [ $? -eq 0 ]; then
+  declare -i IS_X86_64=0
+fi
+
 # Create directory
 mkdir /src
 
@@ -52,7 +58,11 @@ mv `ls -1 /src | grep 'libserialport'` /src/fcgi-interface/lib/libvoltronic/lib/
 
 # Install udev
 yum install -y libudev libudev-devel
-ln -s /usr/lib64/pkgconfig/libudev.pc /hbb_exe/lib/pkgconfig/
+if [ $IS_X86_64 -eq 0 ]; then
+  ln -s /usr/lib/pkgconfig/libudev.pc /hbb_exe/lib/pkgconfig/
+else
+  ln -s /usr/lib64/pkgconfig/libudev.pc /hbb_exe/lib/pkgconfig/
+fi
 
 # Start compiling
 source /hbb_exe/activate
@@ -69,7 +79,11 @@ cd /src/fcgi-interface/lib/libvoltronic/lib/libusb/
 ./configure
 make
 make install
-ln -s /usr/local/lib/pkgconfig/libusb-1.0.pc /hbb_exe/lib/pkgconfig/
+if [ $IS_X86_64 -eq 0 ]; then
+  ln -s /usr/local/lib/pkgconfig/libusb-1.0.pc /hbb_exe/lib/pkgconfig/
+else
+  ln -s /usr/local/lib/pkgconfig/libusb-1.0.pc /hbb_exe/lib/pkgconfig/
+fi
 
 # Build HIDAPI
 cd /src/fcgi-interface/lib/libvoltronic/lib/hidapi
@@ -90,7 +104,17 @@ make
 cd /src/fcgi-interface
 rm -f Makefile
 curl -L -o /src/fcgi-interface/Makefile https://raw.githubusercontent.com/voltronic-inverter/web/master/linux/Makefile
+
 make clean && make libserialport
-mv -f /src/fcgi-interface/voltronic_fcgi_libserialport /io/voltronic_fcgi_libserialport
+if [ $IS_X86_64 -eq 0 ]; then
+  mv -f /src/fcgi-interface/voltronic_fcgi_libserialport /io/voltronic_fcgi_libserialport_x86
+else
+  mv -f /src/fcgi-interface/voltronic_fcgi_libserialport /io/voltronic_fcgi_libserialport_x86-64
+end
+
 make clean && make hidapi-hidraw
-mv -f /src/fcgi-interface/voltronic_fcgi_hidapi_hidraw /io/voltronic_fcgi_hidapi_hidraw
+if [ $IS_X86_64 -eq 0 ]; then
+  mv -f /src/fcgi-interface/voltronic_fcgi_hidapi_hidraw /io/voltronic_fcgi_hidapi_hidraw_x86
+else
+  mv -f /src/fcgi-interface/voltronic_fcgi_hidapi_hidraw /io/voltronic_fcgi_hidapi_hidraw_x86-64
+end
