@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
 # Install the required dependencies
-apt-get clean
-apt-get update
 TZ='Etc/UTC' DEBIAN_FRONTEND='noninteractive' apt-get install -y tzdata
 apt-get install -y make gcc git autoconf automake libtool pkg-config mingw-w64 unzip curl
 
 # Get repo fetching script
+mkdir '/src/'
 curl -L -o '/src/repo_fetcher.sh' 'https://raw.githubusercontent.com/voltronic-inverter/web/master/shared/repo_fetcher.sh'
 chmod 775 '/src/repo_fetcher.sh'
 /src/repo_fetcher.sh
