@@ -40,13 +40,6 @@ rm -rf /src/fcgi-interface/lib/libvoltronic/lib/hidapi
 rm -rf /src/fcgi-interface/lib/libvoltronic/lib/libserialport
 rm -rf /src/fcgi-interface/lib/libvoltronic/lib/libusb
 
-# Get libusb
-cd /src
-curl -o /src/temp.zip -L https://github.com/libusb/libusb/archive/master.zip
-unzip /src/temp.zip
-rm -f /src/temp.zip
-mv /src/libusb-master /src/fcgi-interface/lib/libvoltronic/lib/libusb
-
 # Get HIDAPI
 cd /src
 curl -o /src/temp.zip -L https://github.com/libusb/hidapi/archive/master.zip
