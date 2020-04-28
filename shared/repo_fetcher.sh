@@ -22,13 +22,13 @@ fetch_repo() {
   unzip "/src/${OUTPUT_NAME}.zip" -d '/tmp/unzip_temp/'
 
   echo "Moving to /build/${OUTPUT_NAME}"
-  mv "/tmp/unzip_temp/`ls -1 '/tmp/unzip_temp/'`" "${DESTINATION}/${OUTPUT_NAME}"
+  mv "/tmp/unzip_temp/`ls -1 '/tmp/unzip_temp/'`" "${DESTINATION}"
 
   rm -rf '/tmp/unzip_temp' 1>/dev/null 2>/dev/null
 }
 
 # Get fcgi-interface
-fetch_repo 'fcgi-interface' '/build' 'https://github.com/voltronic-inverter/fcgi-interface/archive/master.zip'
+fetch_repo 'fcgi-interface' '/build/fcgi-interface' 'https://github.com/voltronic-inverter/fcgi-interface/archive/master.zip'
 rm -rf '/build/fcgi-interface/lib/fcgi2' 1>/dev/null 2>/dev/null
 rm -rf '/build/fcgi-interface/lib/libvoltronic' 1>/dev/null 2>/dev/null
 

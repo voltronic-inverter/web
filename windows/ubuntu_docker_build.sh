@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 
-# Install the required dependencies
+# Install dependencies required to fetch the repos
 TZ='Etc/UTC' DEBIAN_FRONTEND='noninteractive' apt-get install -y tzdata
-apt-get install -y make gcc git autoconf automake libtool pkg-config mingw-w64 unzip curl
+apt-get install -y unzip
 
-# Get repo fetching script
+# Get repo fetching script & fetch the repos
 mkdir '/src/'
 curl -L -o '/src/repo_fetcher.sh' 'https://raw.githubusercontent.com/voltronic-inverter/web/master/shared/repo_fetcher.sh'
 chmod 775 '/src/repo_fetcher.sh'
 /src/repo_fetcher.sh
 
-echo "Starting build loop"
+echo "Starting build"
+
+# Install build dependencies
+apt-get install -y make gcc git autoconf automake libtool pkg-config mingw-w64 unzip curl
 
 # Start the build loop
 x=1
