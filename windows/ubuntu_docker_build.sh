@@ -76,14 +76,14 @@ while [ $LOOP_COUNT -le 1 ]; do
   if [ $LOOP_STATE -eq 1 ]; then
     mv -f '/build/fcgi-interface/libserialport.exe' '/io/voltronic_fcgi_libserialport_i686.exe'
   else
-    mv -f '/src/fcgi-interface/libserialport.exe' '/io/voltronic_fcgi_libserialport_x86-64.exe'
+    mv -f '/build/fcgi-interface/libserialport.exe' '/io/voltronic_fcgi_libserialport_x86-64.exe'
   fi
 
   make clean && make hidapi
   if [ $LOOP_STATE -eq 1 ]; then
-    mv -f '/src/fcgi-interface/hidapi.exe' '/io/voltronic_fcgi_hidapi_hidraw_i686.exe'
+    mv -f '/build/fcgi-interface/hidapi.exe' '/io/voltronic_fcgi_hidapi_hidraw_i686.exe'
   else
-    mv -f '/src/fcgi-interface/hidapi.exe' '/io/voltronic_fcgi_hidapi_hidraw_x86-64.exe'
+    mv -f '/build/fcgi-interface/hidapi.exe' '/io/voltronic_fcgi_hidapi_hidraw_x86-64.exe'
   fi
 
   LOOP_COUNT=$(( $LOOP_COUNT + 1 ))
