@@ -13,7 +13,7 @@ chmod 775 '/src/repo_fetcher.sh'
 echo "Starting build"
 
 # Install build dependencies
-apt-get install -y make gcc git autoconf automake libtool pkg-config mingw-w64 unzip curl
+apt-get install -y make gcc autoconf automake libtool pkg-config mingw-w64
 
 # Start the build loop
 x=1
