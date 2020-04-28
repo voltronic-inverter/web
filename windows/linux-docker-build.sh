@@ -100,7 +100,7 @@ else
   mv -f /src/fcgi-interface/libserialport.exe /io/voltronic_fcgi_libserialport_x86-64.exe
 fi
 
-make clean && make hidapi-hidraw
+make clean && make hidapi
 if [ $IS_X86_64 -eq 0 ]; then
   mv -f /src/fcgi-interface/hidapi.exe /io/voltronic_fcgi_hidapi_hidraw_x86.exe
 else
