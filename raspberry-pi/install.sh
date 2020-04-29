@@ -11,8 +11,8 @@ apt-get install -y nginx spawn-fcgi
 mkdir /opt/voltronic-web
 chmod 775 /opt/voltronic-web
 
-# Download udev rules
-wget https://raw.githubusercontent.com/voltronic-inverter/web/master/35-voltronic-udev.rules -O /etc/udev/rules.d/35-voltronic-udev.rules
+# Download udev rules for voltronic inverter USB device
+wget https://raw.githubusercontent.com/voltronic-inverter/web/master/shared/35-voltronic-udev.rules -O /etc/udev/rules.d/35-voltronic-udev.rules
 chmod 664 /etc/udev/rules.d/35-voltronic-udev.rules
 
 # Download CGI interface binaries
@@ -31,7 +31,7 @@ chmod 775 /etc/init.d/voltronic-fcgi-control
 
 # Download nginx configuration & sample web-page
 wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/nginx.conf -O /etc/nginx/nginx.conf
-wget https://raw.githubusercontent.com/voltronic-inverter/web/master/raspberry-pi/command.html -O /usr/share/nginx/html/command.html
+wget https://raw.githubusercontent.com/voltronic-inverter/web/master/shared/command.html -O /usr/share/nginx/html/command.html
 chmod 664 /etc/nginx/nginx.conf
 chmod 664 /usr/share/nginx/html/command.html
 
