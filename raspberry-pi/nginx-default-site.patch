@@ -1,0 +1,15 @@
+        location /voltronic/usb {
+            include "/opt/voltronic-web/nginx-voltronic-fcgi.conf"
+            fastcgi_pass   127.0.0.1:9002;
+
+            add_header Cache-Control no-cache always;
+            add_header Content-Type "text/plain; charset=UTF-8" always;
+        }
+
+        location /voltronic/serial {
+            include "/opt/voltronic-web/nginx-voltronic-fcgi.conf"
+            fastcgi_pass   127.0.0.1:9002;
+
+            add_header Cache-Control no-cache always;
+            add_header Content-Type "text/plain; charset=UTF-8" always;
+        }
