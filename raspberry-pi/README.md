@@ -47,12 +47,15 @@ nano /etc/nginx/nginx.conf
 ```
 
 To configure serial, [modify the parameters in the serial section](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L73-L81)
+
 To configure USB, [modify the parameters in the USB section](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L93-L97)
 
 In both cases you can uncomment a configuration be removing the #
+
 And simply change the current value with what suits you
 
 **You likely will have to update /etc/nging/nginx.conf to match your serial port configuration.**
+
 `fastcgi_param  SERIAL_PORT_NAME    "/dev/tty.usbserial";`
 
 Change this part `/dev/tty.usbserial` to match your serial port.
@@ -61,18 +64,17 @@ Change this part `/dev/tty.usbserial` to match your serial port.
 
 ### Using HTML:
 
-Navigate to:
-`http://${Raspberry PI IP}:8080/command.html`
+Navigate to: `http://${Raspberry PI IP}:8080/command.html`
 
 # Issue a command directly:
 
-### USB:
+### USB
 ```sh
 curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/usb'
 (241.1 50.0 230.1 50.0 0253 0192 005 381 54.60 000 100 0031 0000 000.0 00.00 00000 00010101 00 00 00000 110  # example
 ```
 
-### Serial:
+### Serial
 ```sh
 curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/serial'
 (241.1 50.0 230.1 50.0 0253 0192 005 381 54.60 000 100 0031 0000 000.0 00.00 00000 00010101 00 00 00000 110  # example
@@ -84,7 +86,7 @@ curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/serial'
 
 `(NAK` means the inverter could not process the command.  There are a number of possible reasons:
 - The inverter does not support the command you are sending it
-- The inverter (for example, some Infini solar models) [does not accept CRC on input, disable that here](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L79)  Make sure to modify that in USB also!
+- The inverter (for example, some Infini solar models) [does not accept CRC on input, disable that here](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L79).  Make sure to modify that in USB also!
 - The inverter has some kind of protocol completely unknown to the library (unlikely, but contact me and we can take a look)
 
 ### Why FastCGI?
