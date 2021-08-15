@@ -46,9 +46,9 @@ nano /etc/nginx/nginx.conf
 # etc...
 ```
 
-To configure serial, [modify the parameters in the serial section](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L73-L81)
+To configure serial, [modify the parameters in the serial section](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L79-L83)
 
-To configure USB, [modify the parameters in the USB section](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L93-L97)
+To configure USB, [modify the parameters in the USB section](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L101-L102)
 
 In both cases you can uncomment a configuration be removing the #
 
@@ -86,7 +86,7 @@ curl -X POST -d 'QPIGS' 'http://${Raspberry PI IP}:8080/voltronic/serial'
 
 `(NAK` means the inverter could not process the command.  There are a number of possible reasons:
 - The inverter does not support the command you are sending it
-- The inverter (for example, some Infini solar models) [does not accept CRC on input, disable that here](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L79).  Make sure to modify that in USB also!
+- The inverter (for example, some Infini solar models) [does not accept CRC on input, disable that here](https://github.com/voltronic-inverter/web/blob/master/raspberry-pi/nginx.conf#L76).  Make sure to modify that in USB also!
 - The inverter has some kind of protocol completely unknown to the library (unlikely, but contact me and we can take a look)
 
 ### Why FastCGI?
@@ -103,4 +103,4 @@ Got close using Java by using JNA that created a highly portable library but it 
 
 ### What will this run on?
 
-I've tested this on OSX, Linux (Ubuntu), Raspbian (Wheezy & Buster), Venus OS, Windows XP and Windows 7.  FreeBSD would also be supported but I didn't bother building it for that and if you want FreeBSD feel free to build it yourself or contact me, it is fairly trivial to do, just unlikely to ever get used.
+I've tested this on OSX, Linux (Ubuntu), Raspbian (Wheezy & Buster), Venus OS, Windows XP, Windows 7, Windows 10 and FreeBSD.  Adding support to more obscure operating systems like the other variants of BSD or Solaris should be trivial.
